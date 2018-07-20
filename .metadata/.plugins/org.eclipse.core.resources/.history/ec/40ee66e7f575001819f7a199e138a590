@@ -1,0 +1,26 @@
+package com.qait.automation.DiffClass;
+
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.AfterClass;
+
+public class NewTest {
+	
+		WebDriver driver;
+		BasicCourse page1;
+		GridGate grid;
+		FrameDungeon fd;
+		
+	  @BeforeTest
+	  public void launchBrowser()
+	  {
+	      driver = new ChromeDriver();
+	      driver.get("http://10.0.1.86/tatoc");
+	      page1 = new BasicCourse(driver);
+	  }
+	  @AfterClass
+	  public void closeBrowser(){
+	      //driver.quit();
+	  }
+}

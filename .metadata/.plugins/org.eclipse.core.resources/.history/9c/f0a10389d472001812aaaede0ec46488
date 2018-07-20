@@ -1,0 +1,25 @@
+package automation;
+
+
+
+	import org.openqa.selenium.By;
+	import org.openqa.selenium.WebDriver;
+	
+	import org.openqa.selenium.chrome.ChromeDriver;
+	
+	public class TATOC {
+	    public static void main(String[] args) {
+	        String exepath="/home/qainfotech/Downloads/chromedriver";
+	        System.setProperty("webdriver.chrome.driver",exepath);
+	        WebDriver driver = new ChromeDriver();
+            driver.get("http://10.0.1.86/tatoc");
+            WebElement basic = driver.findElement(By.linkText("Basic Course"));
+	        //driver.get("http://www.google.com");
+	         
+
+	             //Close the browser
+	        //driver.quit();
+	    }
+	}
+	
+

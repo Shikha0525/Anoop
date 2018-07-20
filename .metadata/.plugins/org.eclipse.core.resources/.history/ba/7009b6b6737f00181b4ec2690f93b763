@@ -1,0 +1,32 @@
+package com.qait.automation.BingTranslator;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class Bing_Translator {
+	
+	WebDriver driver;
+	
+	public Bing_Translator(WebDriver driver) {
+		
+		this.driver=driver;
+		
+	}
+
+	public WebElement verifyDropDown() {
+		
+		WebElement dropdownPresent = driver.findElement(By.id("t_sl"));
+		return dropdownPresent;
+    }
+	
+	public void WhenNoLanguageIsSelectedFromDropDown() {
+		
+		WebElement WriteText=driver.findElement(By.id("t_sv"));
+		WebElement ReadOnly=driver.findElement(By.id("t_tv"));
+		WriteText.sendKeys("Good");
+		
+		
+	}
+
+}

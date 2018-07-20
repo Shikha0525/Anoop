@@ -1,0 +1,13 @@
+package com.qait.AdvanceCourse.AdvanceCourseMaven;
+
+import org.openqa.selenium.WebDriver;
+
+public class HoverMenu {
+
+	public HoverMenu(WebDriver driver) {
+		// TODO Auto-generated constructor stub
+	}
+
+	
+
+}

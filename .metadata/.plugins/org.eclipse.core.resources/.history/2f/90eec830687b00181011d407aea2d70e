@@ -1,0 +1,20 @@
+package com.qait.automation.AdvanceViaMethod;
+
+import org.openqa.selenium.WebDriver;
+
+public class QueryGate {
+	
+	WebDriver driver;
+
+	public QueryGate(WebDriver driver) {
+		this.driver=driver;
+		
+	}
+
+	public void connectivity() {
+		 String dbUrl = "jdbc:mysql:// 10.0.1.86/tatoc";
+		
+		
+	}
+
+}

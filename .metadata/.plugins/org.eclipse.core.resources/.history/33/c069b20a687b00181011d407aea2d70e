@@ -1,0 +1,16 @@
+package com.qait.automation.AdvanceViaMethod;
+
+import org.openqa.selenium.WebDriver;
+
+public class QueryGate {
+
+	public QueryGate(WebDriver driver) {
+		
+	}
+
+	public void connectivity() {
+		
+		
+	}
+
+}

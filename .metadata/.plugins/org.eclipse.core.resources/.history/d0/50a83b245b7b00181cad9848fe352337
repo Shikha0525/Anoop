@@ -1,0 +1,17 @@
+package com.qait.automation.AdvanceViaMethod;
+
+import org.openqa.selenium.WebDriver;
+
+public class HoverMenu {
+	
+	WebDriver driver;
+
+	public HoverMenu(WebDriver driver) {
+		this.driver=driver;
+	}
+	public void verify(String url) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
+  <test thread-count="5" name="Default test(failed)">
+    <classes>
+      <class name="com.qait.tap.hristest.NewTest">
+        <methods>
+          <include name="launchBrowser"/>
+          <include name="attemptLoginWithCorrectCredentails"/>
+          <include name="attempt_Login_With_Incorrect_Password_Should_Render_Error_Message"/>
+          <include name="attempt_Login_With_No_Password_Should_Annotate_Blank_Password_Field"/>
+        </methods>
+      </class> <!-- com.qait.tap.hristest.NewTest -->
+    </classes>
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->

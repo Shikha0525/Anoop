@@ -1,0 +1,30 @@
+package com.qainfotech.tap.training.snl.api;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+
+public class NewTest {
+  
+	Board board;
+	
+	@BeforeTest
+	public void startGame() throws FileNotFoundException, UnsupportedEncodingException, IOException
+	{
+		board=new Board();
+	}
+	
+	@Test
+	public void checkPlayerExistException() throws FileNotFoundException, UnsupportedEncodingException, IOException, PlayerExistsException, GameInProgressException, MaxPlayersReachedExeption {
+		
+		board=new Board();
+		board.registerPlayer("Shikha");
+		board.registerPlayer("Shikha");
+		
+	}
+
+}

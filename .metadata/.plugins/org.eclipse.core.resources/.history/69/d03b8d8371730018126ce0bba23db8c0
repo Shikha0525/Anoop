@@ -1,0 +1,61 @@
+package automation;
+
+
+
+	import java.util.Set;
+
+import org.openqa.selenium.By;
+	import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+	
+	public class TATOC {
+	    public static void main(String[] args) {
+	        String exepath="/home/qainfotech/Downloads/chromedriver";
+	        System.setProperty("webdriver.chrome.driver",exepath);
+	        WebDriver driver = new ChromeDriver();
+            driver.get("http://10.0.1.86/tatoc");
+            WebElement basic = driver.findElement(By.linkText("Basic Course"));
+            basic.click();
+            WebElement box = driver.findElement(By.className("greenbox"));
+            box.click();
+            WebElement result=null;
+	        //driver.get("http://www.google.com");
+            WebElement fr = driver.findElement(By.id("main"));
+             driver.switchTo().frame(fr);
+	         String color1=driver.findElement(By.id("answer")).getAttribute("class");
+	         System.out.println(color1);
+	         WebElement fr1 = driver.findElement(By.id("child"));
+             driver.switchTo().frame(fr1);
+	         String color2=driver.findElement(By.id("answer")).getAttribute("class");
+	         driver.switchTo().defaultContent();
+	         while(color1.equals(color2)!=true) {
+	        	 driver.switchTo().frame(fr);
+	        	 driver.findElement(By.linkText("Repaint Box 2")).click(); 
+	        	  
+	        	 driver.switchTo().frame(fr1);
+	        	 color2=driver.findElement(By.id("answer")).getAttribute("class");	
+	        	 driver.switchTo().defaultContent();
+	         }
+	         driver.switchTo().defaultContent();
+	         driver.switchTo().frame(fr);
+	         driver.findElement(By.linkText("Proceed")).click(); 
+	         WebElement drop = driver.findElement(By.id("dropbox"));
+	         WebElement drag = driver.findElement(By.id("dragbox"));
+	         Actions act=new Actions(driver);
+	         act.dragAndDrop(drag, drop).build().perform();
+	         driver.findElement(By.linkText("Proceed")).click(); 
+	         
+	          driver.findElement(By.linkText("Launch Popup Window")).click();
+	                
+	         String handle= driver.getWindowHandle();
+	          driver.switchTo().window("handle");
+	          driver.findElement(By.id("name")).sendKeys("Shikha");
+	          driver.findElement(By.id("submit")).submit();
+	          
+	        //driver.quit();
+	    }
+	}
+	
+

@@ -1,0 +1,73 @@
+package com.qait.automation.AdvanceViaMethod;
+
+import java.beans.Statement;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+
+public class QueryGate {
+	
+	WebDriver driver;
+	Statement stmt;
+	Connection con;
+    ResultSet rs;
+    String dbUrl;
+    String username;
+    String password;
+	
+	public QueryGate(WebDriver driver) {
+		this.driver=driver;
+		
+	}
+
+	public void connectivity() throws ClassNotFoundException, SQLException {
+		 
+		String dbUrl = "jdbc:mysql:// 10.0.1.86/tatoc";
+		String username = "tatocuser";	   //Database Username		
+       	String password = "tatoc01";//Database Password	 
+       	Class.forName("com.mysql.jdbc.Driver");			
+        con = DriverManager.getConnection(dbUrl,username,password);
+        java.sql.Statement stmt = con.createStatement();
+
+	}
+
+	public void ExtractNameAndPasskey() throws SQLException, ClassNotFoundException {
+		
+	   System.out.println("Shikha");	
+	   WebElement symb=driver.findElement(By.id("symbol"));
+	   String ExtractSymbol=symb.getText();
+	   String query="SELECT identity.id,credentials.id,name,passkey,symbol FROM identity INNER JOIN credentials ON identity.id=credentials.id";
+	   rs = ((java.sql.Statement) stmt).executeQuery(query);
+		
+		while (rs.next()) 
+		{
+			String symb1= rs.getString("symbol");
+			
+			String  name = rs.getString("name");
+			String pass= rs.getString("passkey");
+			
+			if(symb1.equalsIgnoreCase(ExtractSymbol))
+			{
+				
+				driver.findElement(By.id("name")).sendKeys(name);
+				driver.findElement(By.id("passkey")).sendKeys(pass);
+				driver.findElement(By.id("submit")).click();
+				break;
+			}
+			
+		}
+		
+		
+	   
+	   
+	}
+   
+	
+	
+}

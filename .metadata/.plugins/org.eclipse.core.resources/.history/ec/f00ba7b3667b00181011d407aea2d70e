@@ -1,0 +1,42 @@
+package com.qait.automation.AdvanceViaMethod;
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeClass;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterClass;
+
+public class NewTest {
+  
+  WebDriver driver;
+  WelcomePage welcomepage;
+  HoverMenu hovermenu;
+  
+  @BeforeClass
+  public void beforeClass() {
+  
+	  String exepath="/home/qainfotech/Downloads/chromedriver";
+      System.setProperty("webdriver.chrome.driver",exepath);
+	  driver = new ChromeDriver();
+	  
+  }
+  
+  @Test(priority=1)
+	public void welcomepage(){
+	  welcomepage= new WelcomePage(driver);
+		welcomepage.launchApplication("http://10.0.1.86/tatoc");
+		welcomepage.verifyHomePageLaunched();
+	}
+  
+  @Test(priority=2)
+	public void HoverMenu() {
+		String url;
+		url="http://10.0.1.86/tatoc/advanced/hover/menu";
+		hovermenu=new HoverMenu(driver);
+		hovermenu.verify(url);
+  }
+  
+  
+  
+  
+  
+}

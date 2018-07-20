@@ -1,0 +1,53 @@
+package com.qait.automation.BingTranslator;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+
+public class Bing_Translator {
+	
+	WebDriver driver;
+	
+	public Bing_Translator(WebDriver driver) {
+		
+		this.driver=driver;
+		
+	}
+
+	public WebElement verifyDropDown() {
+		
+		WebElement dropdownPresent = driver.findElement(By.id("t_sl"));
+		return dropdownPresent;
+    }
+	
+	public void WhenNoLanguageIsSelectedFromDropDown() throws InterruptedException {
+		
+		WebElement WriteText=driver.findElement(By.id("t_sv"));
+		WebElement ReadOnly=driver.findElement(By.id("t_tv"));
+		String ExpectedResult="Good";
+		WriteText.sendKeys(ExpectedResult);
+        Thread.sleep(1000);
+		String ActualResult=ReadOnly.getAttribute("value");
+		Thread.sleep(1000);
+		System.out.println(ExpectedResult);
+		System.out.println(ActualResult);
+		Assert.assertEquals(ActualResult, ExpectedResult);
+		
+	}
+	
+	public void AutoDetectWhenNoLanguageIsSelectedFromDropDown() {
+	
+		WebElement AutoDetectedLanguage=driver.findElement(By.id("t_sl"));
+		String ActualLanguage=AutoDetectedLanguage.getAttribute("value");
+		String ExpectedLanguage="English(detected)";
+		System.out.println(ActualLanguage);
+		System.out.println(ExpectedLanguage);
+		Assert.assertEquals(ActualLanguage, ExpectedLanguage);
+		
+		
+    }
+
+}

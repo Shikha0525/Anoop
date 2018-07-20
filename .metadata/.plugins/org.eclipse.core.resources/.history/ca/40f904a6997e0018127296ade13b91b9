@@ -1,0 +1,50 @@
+package com.qait.automation.HrisUsingFramework;
+
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeClass;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+
+public class NewTest {
+	
+  WebDriver driver;	
+  LoginForm login_form;
+  ReadFileData readfiledata;
+	
+  @BeforeClass
+  public void initial( WebDriver driver) {
+	  String exepath="/home/qainfotech/Downloads/chromedriver";
+      System.setProperty("webdriver.chrome.driver",exepath);
+      driver = new ChromeDriver();
+      driver.get("https://hris.qainfotech.com/login.php");
+      
+      login_form = new LoginForm(driver);
+  }
+  
+  @Test(priority=1)
+  public void attempt_Login_With_Incorrect_Password_Should_Render_Error_Message(){
+	  readfiledata=new ReadFileData();
+	  String username=readfiledata.GetInValidUserName();
+	  String password=readfiledata.GetInValidPassword();
+	  Assert.assertTrue(login_form
+              .loginWithIncorrectCredentials(username, password).contains("Invalid Login"));
+  }
+  
+ /*@Test(priority=2)
+  public void attempt_Login_With_No_Password_Should_Annotate_Blank_Password_Field(){
+  	login_form.login("Shikha", "");
+  	// red border in password entry
+  	Assert.assertTrue(login_form.isPasswordEntryAnnotated());  
+  }
+  
+  @Test(priority=3)
+  public void attemptLoginWithCorrectCredentails()
+  {
+  	TimeSheet ts=login_form.loginWithCorrectCredentials("Shikhatyagi","Shikha@321#");
+  	
+      Assert.assertFalse(login_form.isPasswordEntryAnnotated()); 
+  }*/
+  
+}

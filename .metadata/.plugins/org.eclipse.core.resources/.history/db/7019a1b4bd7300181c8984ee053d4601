@@ -1,0 +1,17 @@
+package tatocwithtestng;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.BeforeClass;
+
+public class Tatoc_maven {
+	WebDriver driver;
+	
+	@BeforeClass
+	public void launchbrowser() {
+		driver=new ChromeDriver();
+		driver.get("https://10.0.1.86/tatoc");
+		
+	}
+
+}

@@ -1,0 +1,22 @@
+package com.qait.automation.BingTranslator;
+
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeClass;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterClass;
+
+public class NewTest {
+  
+  WebDriver driver;	
+	
+  @BeforeClass
+  public void beforeClass(WebDriver driver) {
+	  
+	  String exepath="/home/qainfotech/Downloads/chromedriver";
+      System.setProperty("webdriver.chrome.driver",exepath);
+	  driver=new ChromeDriver();
+	  driver.get("https://www.bing.com/translator");
+  }
+
+ }

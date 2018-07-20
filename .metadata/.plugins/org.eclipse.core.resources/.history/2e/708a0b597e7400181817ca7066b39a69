@@ -1,0 +1,53 @@
+package com.qait.tap.hristest;
+
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import static org.testng.Assert.*;
+import org.testng.annotations.*;
+
+public class NewTest {
+    
+    WebDriver driver;
+    
+    LoginForm loginForm;
+    
+    @Test
+    public void attempt_Login_With_Incorrect_Password_Should_Render_Error_Message(){
+        Assert.assertTrue(loginForm
+                .loginWithIncorrectCredentials("INVALID_USERN", "INVALUD_PASSWEOR").contains("Invalid Login"));
+    }
+    
+    @Test
+    public void attempt_Login_With_No_Password_Should_Annotate_Black_Password_Field(){
+        loginForm.login("Shikha", "");
+        // red border in password entry
+        Assert.assertTrue(loginForm.isPasswordEntryAnnotated());  
+    }
+    
+    @Test
+    public void attempt_Login_With__Password_Should_Annotate_Black_Password_Field(){
+        loginForm.loginWithCorrectCredentials("Shikhatyagi", "Shikha@321#");
+        // red border in password entry
+        //Assert.assertTrue(loginForm.isPasswordEntryTrue()); 
+        String expectedUrl = "https://hris.qainfotech.com:8086/time/timesheet";
+		Assert.assertEquals(expectedUrl, driver.getCurrentUrl(), "Didn't navigate to correct webpage");
+    }
+    
+    @BeforeClass
+    public void launchBrowser(){
+    	 String exepath="/home/qainfotech/Downloads/chromedriver";
+	        System.setProperty("webdriver.chrome.driver",exepath);
+        driver = new ChromeDriver();
+        driver.get("https://s-hris.qainfotech.com");
+        loginForm = new LoginForm(driver);
+    }
+    
+    @AfterClass
+    public void closeBrowser(){
+        driver.quit();
+    }
+    
+}

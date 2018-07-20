@@ -1,0 +1,14 @@
+package com.qait.tap.hristest;
+
+import org.openqa.selenium.WebDriver;
+
+public class TimeSheet {
+
+	webDriver driver;
+	public TimeSheet(WebDriver driver) {
+		
+		this.driver=driver;
+		
+	}
+
+}

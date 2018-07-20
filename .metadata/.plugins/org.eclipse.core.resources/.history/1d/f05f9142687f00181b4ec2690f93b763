@@ -1,0 +1,36 @@
+package com.qait.automation.BingTranslator;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeClass;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterClass;
+
+public class NewTest {
+  
+  WebDriver driver;	
+  Bing_Translator bing;
+	
+  @BeforeClass
+  public void beforeClass(WebDriver driver) {
+	  
+	  String exepath="/home/qainfotech/Downloads/chromedriver";
+      System.setProperty("webdriver.chrome.driver",exepath);
+	  driver=new ChromeDriver();
+	  driver.get("https://www.bing.com/translator");
+	  
+  }
+  
+  @Test
+  public void Drop_Down() {
+	  
+	  JavascriptExecutor js = (JavascriptExecutor)driver;		
+	  
+	  driver.manage().window().maximize();	
+	  js.executeScript("document.getElementById('t_sl').value='someValue';");
+	  js.executeScript("alert('No such value exist');");   
+  }
+   
+  
+ }

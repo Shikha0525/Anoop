@@ -1,0 +1,36 @@
+package automation;
+
+
+
+	import org.openqa.selenium.By;
+	import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+	
+	public class TATOC {
+	    public static void main(String[] args) {
+	        String exepath="/home/qainfotech/Downloads/chromedriver";
+	        System.setProperty("webdriver.chrome.driver",exepath);
+	        WebDriver driver = new ChromeDriver();
+            driver.get("http://10.0.1.86/tatoc");
+            WebElement basic = driver.findElement(By.linkText("Basic Course"));
+            basic.click();
+            WebElement box = driver.findElement(By.className("greenbox"));
+            box.click();
+	        //driver.get("http://www.google.com");
+            WebElement fr = driver.findElement(By.id("main"));
+            driver.switchTo.frame(fr);
+	         WebElement color1=driver.findElement(By.linkText("Box 1"));
+	         WebElement color2 = null;WebElement result=null;
+	         while(color2!=color1) {
+	        	 
+	        	 result=driver.findElement(By.linkText("Repaint Box"));
+	        	         	 
+	         }
+                 result.click();
+	             //Close the browser
+	        //driver.quit();
+	    }
+	}
+	
+

@@ -1,0 +1,31 @@
+package com.qait.automation.AdvanceViaMethod;
+
+import java.beans.Statement;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+import org.openqa.selenium.WebDriver;
+
+public class QueryGate {
+	
+	WebDriver driver;
+
+	public QueryGate(WebDriver driver) {
+		this.driver=driver;
+		
+	}
+
+	public void connectivity() throws ClassNotFoundException, SQLException {
+		 
+		String dbUrl = "jdbc:mysql:// 10.0.1.86/tatoc";
+		String username = "tatocuser";	   //Database Username		
+       	String password = "tatoc01";//Database Password	 
+       	Class.forName("com.mysql.jdbc.Driver");			
+       	Connection con = DriverManager.getConnection(dbUrl,username,password);
+        java.sql.Statement stmt = con.createStatement();		
+        
+       	
+	}
+
+}

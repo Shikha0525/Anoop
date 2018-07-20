@@ -1,0 +1,30 @@
+package com.qait.testing.Maven_Tatoc;
+
+import org.testng.annotations.Test;
+
+import junit.framework.Assert;
+
+import org.testng.annotations.BeforeClass;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterClass;
+
+public class NewTest {
+	
+	WebDriver driver;
+	Basic_Course Basic;
+	GridGate grid;
+	Frame_Dungeon frame;
+	
+	@BeforeClass
+	public void initial() {
+		driver = new ChromeDriver();
+		 Basic= new Basic_Course(driver);
+	}
+	@Test
+	public void Basic(){
+		Basic.launchApplication("http://10.0.1.86/tatoc");
+		Basic.verifyHomePageLaunched();
+	}
+	
+}

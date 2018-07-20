@@ -1,0 +1,31 @@
+package com.qait.automation.HrisUsingFramework;
+
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeClass;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterClass;
+
+public class NewTest {
+	
+  WebDriver driver;	
+  LoginForm login_form;
+	
+  @Test
+  public void initial( WebDriver driver) {
+	  String exepath="/home/qainfotech/Downloads/chromedriver";
+      System.setProperty("webdriver.chrome.driver",exepath);
+      driver = new ChromeDriver();
+      driver.get("https://hris.qainfotech.com/login.php");
+      login_form = new LoginForm(driver);
+	  
+  }
+  @BeforeClass
+  public void beforeClass() {
+  }
+
+  @AfterClass
+  public void afterClass() {
+  }
+
+}
